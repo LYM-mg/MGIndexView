@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|  
   s.name         = "MGIndexView"
-  s.version      = "1.0.0"
+  s.version      = "0.0.1"
   s.summary      = "A custom component for the ecomfe's echarts."
   s.homepage     = "https://github.com/LYM-mg/MGIndexView"
   s.license      = { :type => "MIT", :file => 'LICENSE.md' }

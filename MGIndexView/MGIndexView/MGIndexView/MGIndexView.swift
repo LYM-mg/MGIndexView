@@ -19,7 +19,7 @@ let MGWillDisplayHeaderViewNotification = "MGWillDisplayHeaderViewNotification"
 /** 通知：头部完全消失的的通知 */
 let MGDidEndDisplayingHeaderViewNotification = "MGDidEndDisplayingHeaderViewNotification"
 
-class MGIndexView: UIView {
+public class MGIndexView: UIView {
     // MARK: - 接口属性： UIColor.orange
     var selectTitleColor: UIColor = UIColor.orange { // 选中颜色
         didSet {
@@ -81,15 +81,15 @@ class MGIndexView: UIView {
         MGNotificationCenter.removeObserver(self)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.touchesMoved(touches, with: event)
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         // 获取当前的触摸点
         let curP = touch.location(in: self)
@@ -114,7 +114,7 @@ class MGIndexView: UIView {
             }
         }
     }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if delegate != nil && (delegate?.responds(to: #selector(MGIndexViewDelegate.indexView(_:cancelTouch:with:))))! {
             let _ = delegate?.indexView!(self, cancelTouch: touches, with: event)
         }
