@@ -13,6 +13,9 @@
 		C04DC0981F43D8930093DA00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C04DC0971F43D8930093DA00 /* Assets.xcassets */; };
 		C04DC09B1F43D8930093DA00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04DC0991F43D8930093DA00 /* LaunchScreen.storyboard */; };
 		C04DC0A41F43D89F0093DA00 /* MGIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04DC0A31F43D89F0093DA00 /* MGIndexView.swift */; };
+		F4A7653F21ECA77100956249 /* MGCarGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A7653D21ECA77100956249 /* MGCarGroup.swift */; };
+		F4A7654021ECA77100956249 /* MGCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A7653E21ECA77100956249 /* MGCar.swift */; };
+		F4A7654221ECA7EB00956249 /* cars_total.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A7654121ECA7EB00956249 /* cars_total.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		C04DC09A1F43D8930093DA00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C04DC09C1F43D8930093DA00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C04DC0A31F43D89F0093DA00 /* MGIndexView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGIndexView.swift; sourceTree = "<group>"; };
+		F4A7653D21ECA77100956249 /* MGCarGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCarGroup.swift; sourceTree = "<group>"; };
+		F4A7653E21ECA77100956249 /* MGCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCar.swift; sourceTree = "<group>"; };
+		F4A7654121ECA7EB00956249 /* cars_total.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cars_total.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +64,14 @@
 			children = (
 				C04DC0901F43D8930093DA00 /* AppDelegate.swift */,
 				C04DC0921F43D8930093DA00 /* ViewController.swift */,
+				F4A7653E21ECA77100956249 /* MGCar.swift */,
+				F4A7653D21ECA77100956249 /* MGCarGroup.swift */,
 				C04DC0A21F43D89F0093DA00 /* MGIndexView */,
 				C04DC0941F43D8930093DA00 /* Main.storyboard */,
 				C04DC0971F43D8930093DA00 /* Assets.xcassets */,
 				C04DC0991F43D8930093DA00 /* LaunchScreen.storyboard */,
 				C04DC09C1F43D8930093DA00 /* Info.plist */,
+				F4A7654121ECA7EB00956249 /* cars_total.plist */,
 			);
 			path = MGIndexView;
 			sourceTree = "<group>";
@@ -102,12 +111,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "i-Techsys";
 				TargetAttributes = {
 					C04DC08C1F43D8930093DA00 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = H54L47S422;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -137,6 +147,7 @@
 			files = (
 				C04DC09B1F43D8930093DA00 /* LaunchScreen.storyboard in Resources */,
 				C04DC0981F43D8930093DA00 /* Assets.xcassets in Resources */,
+				F4A7654221ECA7EB00956249 /* cars_total.plist in Resources */,
 				C04DC0961F43D8930093DA00 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +161,8 @@
 			files = (
 				C04DC0931F43D8930093DA00 /* ViewController.swift in Sources */,
 				C04DC0911F43D8930093DA00 /* AppDelegate.swift in Sources */,
+				F4A7653F21ECA77100956249 /* MGCarGroup.swift in Sources */,
+				F4A7654021ECA77100956249 /* MGCar.swift in Sources */,
 				C04DC0A41F43D89F0093DA00 /* MGIndexView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,15 +199,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -236,15 +257,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -278,7 +307,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "i-Techsys.com.MGIndexView";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -291,7 +321,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "i-Techsys.com.MGIndexView";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -314,6 +345,7 @@
 				C04DC0A11F43D8930093DA00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
