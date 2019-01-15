@@ -12,21 +12,21 @@ let MGScreenBounds = UIScreen.main.bounds
 let MGScreenW      = UIScreen.main.bounds.size.width
 let MGScreenH      = UIScreen.main.bounds.size.height
 
-class MGIndexView: UIView {
+open class MGIndexView: UIView {
     // MARK: - 接口属性： UIColor.orange
-    var selectTitleColor: UIColor = UIColor.orange { // 选中颜色
+    @objc public var selectTitleColor: UIColor = UIColor.orange { // 选中颜色
         didSet {
             selectColor = selectTitleColor
         }
     }
-    var normalTitleColor: UIColor = UIColor.gray {  // 正常颜色
+    @objc public  var normalTitleColor: UIColor = UIColor.gray {  // 正常颜色
         didSet {
             normalColor = normalTitleColor
         }
     }
     
-    var selectedScaleAnimation: Bool = false  // 默认false，选中的标题不需要放大
-    weak var delegate: MGIndexViewDelegate?   // 代理
+    @objc public  var selectedScaleAnimation: Bool = false  // 默认false，选中的标题不需要放大
+    @objc open weak var delegate: MGIndexViewDelegate?   // 代理
     
     // MARK: - Public Method
     @objc public func scrollViewSelectButtonTitleColor(section: Int) {
@@ -55,19 +55,28 @@ class MGIndexView: UIView {
     fileprivate lazy var normalColor: UIColor = UIColor.gray
     fileprivate lazy var letterButtons: [UIButton] = [UIButton]()
     fileprivate lazy var selectedButton: UIButton = UIButton() // 当前选中的按钮
-    var letters: [String] = [String]() {     // 右边显示的文字数组
+    @objc open var letters: [String] = [String]() {     // 右边显示的文字数组
         didSet {
             setUpUI()
         }
     }
     
+    @objc public class func indexView(delegate: MGIndexViewDelegate?) -> MGIndexView{
+        return MGIndexView(delegate: delegate,frame: .zero)
+    }
+    
     // MARK: - 系统方法
-    convenience init(frame: CGRect?, delegate: MGIndexViewDelegate?) {
+    @objc public convenience init(delegate: MGIndexViewDelegate?,frame: CGRect) {
         self.init()
         self.delegate = delegate
     }
     
-    override init(frame: CGRect) {
+    @objc public convenience init(delegate: MGIndexViewDelegate?) {
+        self.init()
+        self.delegate = delegate
+    }
+    
+    @objc public override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
         self.frame = CGRect(x: MGScreenW - 18, y: 0, width: 18, height: MGScreenH)
@@ -77,17 +86,17 @@ class MGIndexView: UIView {
         debugPrint("MGIndexView--deinit")
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     
     // MARK: - 触摸方法
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.touchesMoved(touches, with: event)
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         // 获取当前的触摸点
         let curP = touch.location(in: self)
@@ -112,7 +121,7 @@ class MGIndexView: UIView {
             }
         }
     }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if delegate != nil && (delegate?.responds(to: #selector(MGIndexViewDelegate.indexView(_:cancelTouch:with:))))! {
             let _ = delegate?.indexView!(self, cancelTouch: touches, with: event)
         }
@@ -132,19 +141,19 @@ extension MGIndexView {
         let x = 0
         for (i,letter) in letters.enumerated() {
             let y = i*(h)
-             let btn = UIButton(frame: CGRect(x: x, y: y, width: Int(self.frame.size.width), height: h))
+            let btn = UIButton(frame: CGRect(x: x, y: y, width: Int(self.frame.size.width), height: h))
             btn.setTitle(letter, for: .normal)
             btn.setTitleColor(normalColor, for: .normal)
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
             btn.titleLabel?.textAlignment = .center
-//            btn.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+            //            btn.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
             btn.isUserInteractionEnabled = false
             addSubview(btn)
             letterButtons.append(btn)
             
             if i == 0 {
                 btn.setTitleColor(selectColor, for: .normal)
-                if letter == "🔍" {                    
+                if letter == "🔍" {
                     btn.titleLabel?.font = UIFont.systemFont(ofSize: 10)
                 }else {
                     btn.setTitleColor(selectColor, for: .normal)
@@ -171,12 +180,11 @@ extension MGIndexView {
 
 
 // MARK: - 协议
-@objc
-protocol MGIndexViewDelegate: NSObjectProtocol {
+@objc public protocol MGIndexViewDelegate: NSObjectProtocol {
     // 手指触摸的时候调用
-    func indexView(_ indexView: MGIndexView, sectionForSectionIndexTitle title: String, at index: Int) -> Int
+    @objc func indexView(_ indexView: MGIndexView, sectionForSectionIndexTitle title: String, at index: Int) -> Int
     // 返回数据源
-    func indexViewSectionIndexTitles(for indexView: MGIndexView) -> [String]?
+    @objc func indexViewSectionIndexTitles(for indexView: MGIndexView) -> [String]?
     // 手指离开的时候调用
     @objc optional func indexView(_ indexView: MGIndexView, cancelTouch: Set<UITouch>, with event: UIEvent?)
 }

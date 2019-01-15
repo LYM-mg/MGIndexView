@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "9.0"
   s.source       = { :git => "https://github.com/LYM-mg/MGIndexView.git", :tag => s.version}
   s.frameworks   = 'UIKit'
-  s.source_files  = 'MGIndexView/**/MGIndexView/*.swift'
+  s.source_files  = 'MGIndexView/**/*/MGIndexView/*.swift'
 # "Classes", "Classes/**/*.{h,m}"
   s.exclude_files = "Classes/Exclude"
   s.requires_arc = true
