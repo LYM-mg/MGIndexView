@@ -64,8 +64,7 @@
 			children = (
 				C04DC0901F43D8930093DA00 /* AppDelegate.swift */,
 				C04DC0921F43D8930093DA00 /* ViewController.swift */,
-				F4A7653E21ECA77100956249 /* MGCar.swift */,
-				F4A7653D21ECA77100956249 /* MGCarGroup.swift */,
+				F429130421EDE60F00B61464 /* Model */,
 				C04DC0A21F43D89F0093DA00 /* MGIndexView */,
 				C04DC0941F43D8930093DA00 /* Main.storyboard */,
 				C04DC0971F43D8930093DA00 /* Assets.xcassets */,
@@ -82,6 +81,15 @@
 				C04DC0A31F43D89F0093DA00 /* MGIndexView.swift */,
 			);
 			path = MGIndexView;
+			sourceTree = "<group>";
+		};
+		F429130421EDE60F00B61464 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F4A7653E21ECA77100956249 /* MGCar.swift */,
+				F4A7653D21ECA77100956249 /* MGCarGroup.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
